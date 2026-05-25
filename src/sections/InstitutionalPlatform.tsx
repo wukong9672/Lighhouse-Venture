@@ -1,9 +1,8 @@
 import { lazy, Suspense } from "react";
-import { FinalCTA } from "./FinalCTA";
-import { HeroSection } from "./HeroSection";
+import { FixedNav } from "../components/FixedNav";
 import { IPOIntelTracker } from "./IPOIntelTracker";
-import { MarketStats } from "./MarketStats";
 import { NLFFramework } from "./NLFFramework";
+import { StoryPanels } from "./StoryPanels";
 
 const SectorIntelligence = lazy(() =>
   import("./SectorIntelligence").then((module) => ({
@@ -13,9 +12,9 @@ const SectorIntelligence = lazy(() =>
 
 export const InstitutionalPlatform = () => (
   <div className="bg-pitchBlack font-sans text-white selection:bg-burntOrange/30 selection:text-white">
-    <HeroSection />
+    <FixedNav />
+    <StoryPanels />
     <NLFFramework />
-    <MarketStats />
     <div id="ipo-intelligence">
       <IPOIntelTracker />
     </div>
@@ -32,7 +31,6 @@ export const InstitutionalPlatform = () => (
     >
       <SectorIntelligence />
     </Suspense>
-    <FinalCTA />
     <footer className="border-t border-white/5 px-6 py-10 text-center text-[0.63rem] uppercase tracking-[0.42em] text-white/20">
       © 2026 Malaysia Stock Intelligence Platform // Narrative & Liquidity
       Framework

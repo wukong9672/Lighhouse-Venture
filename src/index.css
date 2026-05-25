@@ -26,6 +26,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 18% 18%, rgb(255 106 0 / 16%), transparent 28rem),
     linear-gradient(135deg, #050505 0%, #111111 42%, #050505 100%);
@@ -37,4 +38,33 @@ html {
 
 .stroke-text {
   -webkit-text-stroke: 1px rgb(255 255 255 / 30%);
+}
+
+.glass-card {
+  border: 1px solid rgb(255 255 255 / 5%);
+  background: rgb(255 255 255 / 3%);
+  backdrop-filter: blur(10px);
+}
+
+.orange-glow {
+  box-shadow: 0 0 50px -10px rgb(255 106 0 / 20%);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff6a00;
+}
+
+@media (min-width: 768px) {
+  .story-panel {
+    position: sticky;
+    top: 0;
+  }
 }
