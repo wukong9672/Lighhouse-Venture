@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@theme {
+  --color-pitchBlack: #050505;
+  --color-charcoal: #111111;
+  --color-burntOrange: #ff6a00;
+  --color-amberGold: #ffb347;
+}
+
+:root {
+  color: #ffffff;
+  background: #050505;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 18% 18%, rgb(255 106 0 / 16%), transparent 28rem),
+    linear-gradient(135deg, #050505 0%, #111111 42%, #050505 100%);
+}
