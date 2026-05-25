@@ -1,7 +1,9 @@
+import { IPOIntelTracker } from "./sections/IPOIntelTracker";
+
 function App() {
   return (
-    <main className="min-h-screen bg-pitchBlack px-6 py-10 text-white sm:px-10">
-      <section className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-6xl flex-col justify-center">
+    <main className="min-h-screen bg-pitchBlack text-white">
+      <section className="mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-10 sm:px-10">
         <p className="mb-6 text-sm font-semibold uppercase tracking-[0.35em] text-burntOrange">
           Malaysia Institutional IPO Intelligence
         </p>
@@ -33,6 +35,7 @@ function App() {
           ))}
         </div>
       </section>
+      <IPOIntelTracker />
     </main>
   );
 }
