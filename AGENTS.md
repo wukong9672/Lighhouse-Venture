@@ -939,3 +939,26 @@ Not like:
 
 But like:
 a premium financial intelligence product.
+
+---
+
+## Cursor Cloud specific instructions
+
+### Service Overview
+
+This is a single-page React SPA (no backend/database). The only service is the Vite dev server.
+
+### Commands Reference
+
+All commands are defined in `package.json` scripts:
+- `pnpm dev` — Start Vite dev server (port 5173)
+- `pnpm lint` — ESLint
+- `pnpm typecheck` — TypeScript compiler check
+- `pnpm build` — Full build (typecheck + Vite production build)
+
+### Dev Server Notes
+
+- Use `pnpm dev --host 0.0.0.0` to make the server accessible from the browser pane.
+- The dev server starts in ~200ms and supports HMR — no restart needed after code changes.
+- No environment variables or `.env` files are required.
+- No external services, databases, or APIs are needed — all data is hardcoded in `src/data/`.
