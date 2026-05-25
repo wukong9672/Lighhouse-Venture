@@ -6,6 +6,7 @@ export default {
       colors: {
         pitchBlack: "#050505",
         charcoal: "#111111",
+        deepNavy: "#070B14",
         burntOrange: "#FF6A00",
         amberGold: "#FFB347",
       },

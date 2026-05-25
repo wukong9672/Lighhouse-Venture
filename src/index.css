@@ -4,6 +4,7 @@
 @theme {
   --color-pitchBlack: #050505;
   --color-charcoal: #111111;
+  --color-deepNavy: #070b14;
   --color-burntOrange: #ff6a00;
   --color-amberGold: #ffb347;
 }
@@ -28,4 +29,12 @@ body {
   background:
     radial-gradient(circle at 18% 18%, rgb(255 106 0 / 16%), transparent 28rem),
     linear-gradient(135deg, #050505 0%, #111111 42%, #050505 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.stroke-text {
+  -webkit-text-stroke: 1px rgb(255 255 255 / 30%);
 }
