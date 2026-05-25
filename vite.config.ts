@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     host: "0.0.0.0",
-    allowedHosts: [".cursorm.com", "localhost", "127.0.0.1"],
+    allowedHosts: [".cursorvm.com", ".cursorm.com", "localhost", "127.0.0.1"],
   },
 });
