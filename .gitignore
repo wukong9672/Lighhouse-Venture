@@ -3,3 +3,6 @@ dist
 .DS_Store
 *.local
 *.tsbuildinfo
+
+# Excel source files (binary - converted to JSON for runtime)
+data/*.xlsx
