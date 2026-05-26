@@ -5,6 +5,8 @@ export interface IPOListing {
   companyName: string;
   sector: string;
   underwriter: string;
+  businessModel: string;
+  listingBoard: string;
   ipoPrice: number;
   firstDayClose: number;
   oversubscription: number;

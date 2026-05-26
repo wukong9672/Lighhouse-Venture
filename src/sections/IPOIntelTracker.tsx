@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, BarChart3, Search } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, BarChart3, Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { IPO_DATABASE } from "../data/ipoListings";
 import type { IPOListing } from "../types/ipo";
@@ -18,40 +18,52 @@ export const IPOIntelTracker = () => {
     }
 
     return IPO_DATABASE.filter((ipo) =>
-      [ipo.companyName, ipo.sector, ipo.underwriter, ipo.status].some((value) =>
-        value.toLowerCase().includes(normalizedQuery),
-      ),
+      [
+        ipo.companyName,
+        ipo.sector,
+        ipo.underwriter,
+        ipo.status,
+        ipo.businessModel,
+        ipo.listingBoard,
+      ].some((value) => value.toLowerCase().includes(normalizedQuery)),
     );
   }, [query]);
 
   return (
-    <section className="border-t border-white/5 bg-pitchBlack px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl">
+    <section
+      className="border-t border-hairline bg-canvas px-5 py-20 sm:px-10 lg:py-24"
+      id="database"
+    >
+      <div className="mx-auto max-w-[1440px]">
         <div className="mb-16 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.32em] text-white/35">
-              Phase 2: Pattern Recognition Database
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.32em] text-body">
+              Pattern Recognition Database
             </p>
-            <h2 className="text-4xl font-black uppercase tracking-[-0.08em] text-white sm:text-6xl">
-              IPO{" "}
-              <span className="italic text-burntOrange">Intelligence</span>
+            <h2 className="max-w-4xl text-4xl font-bold uppercase leading-[1.05] text-white sm:text-6xl">
+              IPO Intelligence, tuned like race telemetry.
             </h2>
+            <p className="mt-5 max-w-2xl text-base font-light leading-8 text-body">
+              Filter by company, sector, underwriter, or status. Each card keeps
+              the core listing mechanics visible without turning research into a
+              spreadsheet.
+            </p>
           </div>
 
           <div className="group relative w-full md:w-72">
             <Search
               aria-hidden="true"
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-white/20 transition-colors group-focus-within:text-burntOrange"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-muted transition-colors group-focus-within:text-white"
               size={16}
             />
             <label className="sr-only" htmlFor="ipo-filter">
               Filter IPO listings
             </label>
             <input
-              className="w-full border-0 border-b border-white/10 bg-transparent py-3 pl-10 text-xs uppercase tracking-[0.22em] text-white outline-none transition-colors placeholder:text-white/25 focus:border-burntOrange"
+              className="h-12 w-full border border-hairline bg-surfaceCard py-3 pl-11 pr-4 text-xs uppercase tracking-[0.18em] text-white outline-none transition-colors placeholder:text-muted focus:border-white"
               id="ipo-filter"
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Filter by sector..."
+              placeholder="Filter database..."
               type="text"
               value={query}
             />
@@ -59,7 +71,7 @@ export const IPOIntelTracker = () => {
         </div>
 
         <motion.div
-          className="grid grid-cols-1 gap-px border border-white/5 bg-white/5 lg:grid-cols-2"
+          className="grid grid-cols-1 gap-px border border-hairline bg-hairline lg:grid-cols-2"
           layout
         >
           <AnimatePresence mode="popLayout">
@@ -70,57 +82,94 @@ export const IPOIntelTracker = () => {
               return (
                 <motion.article
                   animate={{ opacity: 1, y: 0 }}
-                  className="group relative overflow-hidden bg-pitchBlack p-6 transition-colors sm:p-10"
+                  className="group relative overflow-hidden bg-canvas p-6 transition-colors sm:p-8 lg:p-10"
                   exit={{ opacity: 0, y: 16 }}
                   initial={{ opacity: 0, y: 16 }}
                   key={ipo.id}
                   layout
                   transition={{ duration: 0.45, ease: "easeOut" }}
-                  whileHover={{ backgroundColor: "rgba(255, 106, 0, 0.035)" }}
+                  whileHover={{ backgroundColor: "#0d0d0d" }}
                 >
-                  <div className="absolute right-0 top-0 p-6 text-right">
+                  <div className="absolute inset-x-0 top-0 h-1">
                     <div
-                      className={`flex items-start justify-end text-3xl font-black leading-none ${
-                        isPositive ? "text-burntOrange" : "text-white/45"
+                      className={`h-full ${
+                        isPositive ? "m-stripe" : "bg-hairline"
+                      }`}
+                    />
+                  </div>
+
+                  <div className="absolute right-0 top-0 p-6 text-right sm:p-8">
+                    <div
+                      className={`flex items-start justify-end text-3xl font-bold leading-none ${
+                        isPositive ? "text-white" : "text-muted"
                       }`}
                     >
                       {isPositive ? "+" : ""}
                       {roi.toFixed(0)}%
-                      <ArrowUpRight
-                        aria-hidden="true"
-                        className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
-                        size={16}
-                      />
+                      {isPositive ? (
+                        <ArrowUpRight
+                          aria-hidden="true"
+                          className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+                          size={16}
+                        />
+                      ) : (
+                        <ArrowDownRight
+                          aria-hidden="true"
+                          className="transition-transform group-hover:translate-x-1 group-hover:translate-y-1"
+                          size={16}
+                        />
+                      )}
                     </div>
-                    <span className="mt-1 block text-[0.5rem] uppercase tracking-[0.32em] text-white/25">
-                      ROI
+                    <span className="mt-1 block text-[0.65rem] uppercase tracking-[0.32em] text-muted">
+                      Day 1
                     </span>
                   </div>
 
-                  <div className="mb-12 max-w-[70%]">
-                    <span className="mb-3 block text-[0.63rem] uppercase tracking-[0.28em] text-white/40">
-                      {ipo.sector} // {ipo.underwriter}
+                  <div className="mb-12 max-w-[68%]">
+                    <span className="mb-4 block text-[0.68rem] font-bold uppercase tracking-[0.24em] text-muted">
+                      {ipo.sector} / {ipo.underwriter}
                     </span>
-                    <h3 className="text-2xl font-bold uppercase tracking-[-0.04em] text-white transition-colors group-hover:text-burntOrange">
+                    <h3 className="text-2xl font-bold uppercase leading-tight text-white transition-colors group-hover:text-bodyStrong sm:text-3xl">
                       {ipo.companyName}
                     </h3>
-                    <p className="mt-4 inline-flex border border-white/10 px-3 py-1 text-[0.58rem] font-bold uppercase tracking-[0.24em] text-amberGold">
-                      {ipo.status}
-                    </p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      <p className="border border-hairline px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-body">
+                        {ipo.status}
+                      </p>
+                      <p className="border border-hairline px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-body">
+                        {ipo.listingBoard}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="grid gap-8 sm:grid-cols-2 sm:items-end">
-                    <div className="grid grid-cols-2 gap-5 sm:block sm:space-y-5">
-                      <div>
-                        <p className="mb-1 text-[0.56rem] font-bold uppercase tracking-[0.28em] text-white/25">
-                          Oversubscription
+                  <div className="grid gap-6 sm:grid-cols-[0.95fr_1.05fr] sm:items-end">
+                    <div className="grid grid-cols-2 gap-px bg-hairline">
+                      <div className="bg-surfaceSoft p-4">
+                        <p className="mb-2 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-muted">
+                          IPO Price
+                        </p>
+                        <p className="font-mono text-lg font-bold text-white">
+                          RM {ipo.ipoPrice.toFixed(2)}
+                        </p>
+                      </div>
+                      <div className="bg-surfaceSoft p-4">
+                        <p className="mb-2 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-muted">
+                          First Day
+                        </p>
+                        <p className="font-mono text-lg font-bold text-white">
+                          RM {ipo.firstDayClose.toFixed(2)}
+                        </p>
+                      </div>
+                      <div className="bg-surfaceSoft p-4">
+                        <p className="mb-2 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-muted">
+                          Subscription
                         </p>
                         <p className="font-mono text-lg font-bold text-white">
                           {ipo.oversubscription}x
                         </p>
                       </div>
-                      <div>
-                        <p className="mb-1 text-[0.56rem] font-bold uppercase tracking-[0.28em] text-white/25">
+                      <div className="bg-surfaceSoft p-4">
+                        <p className="mb-2 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-muted">
                           Market Cap
                         </p>
                         <p className="font-mono text-lg font-bold text-white">
@@ -129,13 +178,13 @@ export const IPOIntelTracker = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-2 border-burntOrange/30 bg-burntOrange/5 p-4">
-                      <p className="mb-2 flex items-center gap-2 text-[0.56rem] font-bold uppercase tracking-[0.2em] text-burntOrange">
-                        <BarChart3 aria-hidden="true" size={10} />
-                        NLF Narrative
+                    <div className="border-l border-white bg-white p-5 text-black">
+                      <p className="mb-2 flex items-center gap-2 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-black">
+                        <BarChart3 aria-hidden="true" size={12} />
+                        Signal Note
                       </p>
-                      <p className="text-xs font-light italic leading-relaxed text-white/60">
-                        &ldquo;{ipo.narrative}&rdquo;
+                      <p className="text-sm font-light leading-7 text-black/75">
+                        {ipo.businessModel}. {ipo.narrative}
                       </p>
                     </div>
                   </div>
@@ -146,9 +195,9 @@ export const IPOIntelTracker = () => {
         </motion.div>
 
         {filteredIpos.length === 0 ? (
-          <div className="border border-white/5 bg-charcoal p-8 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/35">
-              No IPO records match this institutional filter.
+          <div className="border border-hairline bg-surfaceCard p-8 text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-body">
+              No IPO records match this filter.
             </p>
           </div>
         ) : null}

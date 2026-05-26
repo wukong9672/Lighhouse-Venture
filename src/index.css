@@ -2,15 +2,23 @@
 @config "../tailwind.config.js";
 
 @theme {
-  --color-pitchBlack: #050505;
-  --color-charcoal: #111111;
-  --color-burntOrange: #ff6a00;
-  --color-amberGold: #ffb347;
+  --color-canvas: #000000;
+  --color-onDark: #ffffff;
+  --color-body: #bbbbbb;
+  --color-bodyStrong: #e6e6e6;
+  --color-muted: #7e7e7e;
+  --color-hairline: #3c3c3c;
+  --color-surfaceSoft: #0d0d0d;
+  --color-surfaceCard: #1a1a1a;
+  --color-surfaceElevated: #262626;
+  --color-mBlueLight: #0066b1;
+  --color-mBlueDark: #1c69d4;
+  --color-mRed: #e22718;
 }
 
 :root {
   color: #ffffff;
-  background: #050505;
+  background: #000000;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,7 +33,23 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  background:
-    radial-gradient(circle at 18% 18%, rgb(255 106 0 / 16%), transparent 28rem),
-    linear-gradient(135deg, #050505 0%, #111111 42%, #050505 100%);
+  background: #000000;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #ffffff;
+  color: #000000;
+}
+
+.m-stripe {
+  background: linear-gradient(90deg, #0066b1 0 33.333%, #1c69d4 33.333% 66.666%, #e22718 66.666% 100%);
+}
+
+.hero-photo-band,
+.cta-photo-band {
+  background-color: #000000;
 }
