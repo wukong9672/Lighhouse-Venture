@@ -2,15 +2,27 @@
 @config "../tailwind.config.js";
 
 @theme {
-  --color-pitchBlack: #050505;
-  --color-charcoal: #111111;
-  --color-burntOrange: #ff6a00;
-  --color-amberGold: #ffb347;
+  --color-primary: #ffed00;
+  --color-primary-deep: #e6d200;
+  --color-ink: #000000;
+  --color-body: #222222;
+  --color-charcoal: #333333;
+  --color-mute: #666666;
+  --color-ash: #8a8a8a;
+  --color-stone: #c4c4c4;
+  --color-canvas: #ffffff;
+  --color-surface-soft: #f7f7f7;
+  --color-surface-dark: #000000;
+  --color-surface-deep: #111111;
+  --color-hairline: #f2f2f2;
+  --color-success: #8dc572;
+  --color-error: #be6464;
+  --color-warning: #f0ad4e;
 }
 
 :root {
-  color: #ffffff;
-  background: #050505;
+  color: #000000;
+  background: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,7 +37,5 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  background:
-    radial-gradient(circle at 18% 18%, rgb(255 106 0 / 16%), transparent 28rem),
-    linear-gradient(135deg, #050505 0%, #111111 42%, #050505 100%);
+  background: #ffffff;
 }
