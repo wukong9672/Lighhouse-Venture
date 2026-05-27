@@ -582,6 +582,35 @@ src/
  ├── assets/
  └── types/
 
+Preferred IPO-first page structure:
+
+src/
+ ├── pages/
+ │   ├── Home.tsx
+ │   └── IPOIntelligenceLab.tsx
+ ├── sections/
+ │   └── ipo/
+ │       ├── IPOHero.tsx
+ │       ├── IPOListingRoadmap.tsx
+ │       ├── MarketComparison.tsx
+ │       ├── ListingCostBreakdown.tsx
+ │       ├── MarketCycleTimeline.tsx
+ │       ├── IPOYearbook.tsx
+ │       ├── InteractiveIPOTimeline.tsx
+ │       ├── IPOCaseStudies.tsx
+ │       ├── BestWorstIPORankings.tsx
+ │       └── IPOPatternAnalysis.tsx
+ ├── data/
+ │   ├── ipoListings.ts
+ │   ├── ipoCaseStudies.ts
+ │   ├── marketCycles.ts
+ │   ├── listingRequirements.ts
+ │   └── ipoRankings.ts
+ └── types/
+     └── ipo.ts
+
+Avoid creating standalone sector pages or standalone market framework pages unless explicitly requested by the user.
+
 ---
 
 Preferred IPO-first page structure:
@@ -1007,3 +1036,10 @@ All commands are defined in `package.json` scripts:
 - The dev server starts in ~200ms and supports HMR — no restart needed after code changes.
 - No environment variables or `.env` files are required.
 - No external services, databases, or APIs are needed — all data is hardcoded in `src/data/`.
+
+### Preview Verification
+
+- For every UI or website change, start or reuse `pnpm dev --host 0.0.0.0`.
+- Confirm the app loads in Cursor Preview / browser before final response.
+- If the user needs a clickable external preview URL, do not provide `localhost` or `172.x.x.x`; use the Cursor forwarded port URL if visible, or create and verify a temporary external tunnel.
+- Include screenshot or video evidence after confirming the page loads.
