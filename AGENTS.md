@@ -7,7 +7,8 @@ This document defines the execution rules, project structure, UI standards, work
 The goal is:
 Build a premium institutional-style Malaysia stock intelligence website focused on:
 - IPO analytics
-- Bursa Malaysia sector insights
+- Malaysia IPO intelligence
+- Bursa Malaysia market context
 - Data visualization
 - Animated storytelling
 - Premium financial experience
@@ -22,9 +23,10 @@ clarity, consistency, maintainability, mobile responsiveness, smooth animation, 
 Build a modern financial intelligence platform for a Malaysian remisier.
 
 Core focus:
-- Bursa Malaysia sectors
 - IPO database
 - IPO pattern analysis
+- IPO listing education
+- Malaysia market cycle context
 - Institutional storytelling
 - Premium animated landing pages
 - Financial education
@@ -55,14 +57,15 @@ Phase 2 and Phase 3 are future major expansion updates.
 The goal is NOT to become a stock tips website.
 
 The goal is to build:
-a premium Malaysian market intelligence and investor framework platform.
+a premium Malaysian IPO intelligence and investor education platform.
 
 ## Phase 1 - Current Platform
 
-Phase 1 should establish the premium visual identity, core homepage experience, Bursa sector storytelling, IPO intelligence preview, and institutional-grade educational tone.
+Phase 1 should establish the premium visual identity, core homepage experience, IPO Intelligence Lab preview, Malaysia market cycle storytelling, and institutional-grade educational tone.
 
 This phase should prove the product direction:
 - premium Malaysian market intelligence
+- IPO-first educational structure
 - editorial infographic storytelling
 - clear investor education
 - cinematic but readable layouts
@@ -125,26 +128,25 @@ It should NOT feel like a boring spreadsheet database.
 The IPO database should feel like:
 a market intelligence exploration system.
 
-## Phase 3 - Narrative & Liquidity Framework(TM)
+## Phase 3 - IPO Intelligence Lab Expansion
 
 This is the most important long-term layer of the platform.
 
-This phase establishes the platform's proprietary market interpretation philosophy:
-Narrative & Liquidity Framework(TM), abbreviated as NLF.
+This phase expands the platform into a deeper IPO intelligence and market observation system.
 
 Core belief:
-Narrative attracts attention.
-Liquidity moves markets.
+IPO performance is shaped by structure, valuation, demand, liquidity, sentiment, sector narrative, and market cycle.
 
-This framework is NOT about predicting stocks.
+This layer is NOT about predicting stocks.
 
 It is about teaching users how to interpret:
-- market structure
-- liquidity movement
-- institutional behavior
-- sector rotation
-- market cycles
-- narrative formation
+- IPO structure
+- listing demand
+- liquidity behavior
+- market sentiment
+- underwriter influence
+- sector/category momentum
+- company narrative during listing
 
 The framework should train users to think more like:
 - institutional investors
@@ -153,23 +155,29 @@ The framework should train users to think more like:
 
 Instead of emotional retail traders.
 
-Core NLF concepts:
-- how narratives form
-- how liquidity enters sectors
-- how institutional money rotates
-- how market cycles evolve
-- how sectors gain momentum
-- how capital flows drive price action
+Core IPO intelligence concepts:
+- how companies prepare before IPO
+- how Bursa listing markets differ
+- how IPO demand forms
+- how oversubscription should be interpreted
+- how liquidity affects listing-day performance
+- how sentiment changes from 2020 to 2026
+- how policy direction and market cycles affect IPO appetite
+- how sector/category themes influence investor attention
 
-Core NLF pillars:
-- Market Cycle
-- Sector Rotation
-- IPO Psychology
-- Institutional Flow
-- Liquidity Mapping
-- Capital Allocation
-- Risk Framework
-- Narrative Strength
+Core IPO Intelligence Lab pillars:
+- IPO Listing Process
+- Main Market / ACE Market / LEAP Market Comparison
+- Listing Cost & Professional Parties
+- Malaysia Market Cycle 2020-2026
+- IPO Yearbook 2021-2026
+- Interactive IPO Timeline
+- IPO Case Studies
+- Best & Worst IPO Rankings
+- IPO Pattern Analysis
+- IPO Strength Score
+
+Do NOT create a standalone market framework navigation tree or separate framework pillar pages unless the user explicitly asks for it. Narrative, liquidity, market cycle, and institutional behavior should be integrated as supporting analysis inside IPO Intelligence Lab content.
 
 ## Important Platform Philosophy
 
@@ -191,9 +199,9 @@ a finance content website.
 
 The platform should eventually become:
 - a market intelligence ecosystem
-- an investor framework platform
+- an IPO intelligence platform
 - a premium education system
-- a liquidity and narrative observation platform
+- a Malaysia market observation platform
 - an institutional-style learning experience
 
 The emotional feeling of the platform should be:
@@ -327,7 +335,8 @@ Avoid:
 Must include:
 - hero storytelling
 - IPO intelligence preview
-- Bursa sector overview
+- Malaysia market cycle preview
+- IPO Intelligence Lab preview
 - visual insight cards
 - animated storytelling sections
 - premium infographic sections
@@ -337,6 +346,11 @@ Must include:
 ## IPO Intelligence
 
 Must include:
+- IPO listing process in Malaysia
+- Main Market / ACE Market / LEAP Market comparison
+- estimated Bursa listing cost breakdown
+- role of underwriters, advisers, auditors, lawyers and regulators
+- pre-IPO preparation steps
 - IPO price
 - first day closing price
 - percentage gain/loss
@@ -354,24 +368,24 @@ Presentation style:
 
 ---
 
-## Sector Pages
+## IPO Intelligence Lab
 
-Include:
-- Banking
-- Technology
-- Data Centre
-- Utilities
-- Consumer
-- Construction
-- Property
+This should be the main product structure for the website.
 
-Each sector page should include:
-- sector thesis
-- catalysts
-- risks
-- related stocks
-- visual insight cards
-- infographic storytelling sections
+Recommended sections:
+- IPO Listing Guide
+- Main Market / ACE Market / LEAP Market Comparison
+- Cost of Listing in Bursa
+- Role of Underwriters and Professional Advisers
+- Malaysia Market Cycle 2020-2026
+- IPO Yearbook 2021-2026
+- Interactive IPO Timeline 2020-2026
+- 40 Malaysia IPO Case Studies
+- Top 10 Best IPO Performers
+- Top 10 Worst IPO Performers
+- IPO Pattern Analysis
+
+Sector/category information should appear inside IPO analysis, IPO filters, IPO company profiles, rankings, and case studies. Do NOT create standalone sector navigation or dedicated sector pages unless the user explicitly asks for them.
 
 ---
 
@@ -567,6 +581,35 @@ src/
  ├── styles/
  ├── assets/
  └── types/
+
+Preferred IPO-first page structure:
+
+src/
+ ├── pages/
+ │   ├── Home.tsx
+ │   └── IPOIntelligenceLab.tsx
+ ├── sections/
+ │   └── ipo/
+ │       ├── IPOHero.tsx
+ │       ├── IPOListingRoadmap.tsx
+ │       ├── MarketComparison.tsx
+ │       ├── ListingCostBreakdown.tsx
+ │       ├── MarketCycleTimeline.tsx
+ │       ├── IPOYearbook.tsx
+ │       ├── InteractiveIPOTimeline.tsx
+ │       ├── IPOCaseStudies.tsx
+ │       ├── BestWorstIPORankings.tsx
+ │       └── IPOPatternAnalysis.tsx
+ ├── data/
+ │   ├── ipoListings.ts
+ │   ├── ipoCaseStudies.ts
+ │   ├── marketCycles.ts
+ │   ├── listingRequirements.ts
+ │   └── ipoRankings.ts
+ └── types/
+     └── ipo.ts
+
+Avoid creating standalone sector pages or standalone market framework pages unless explicitly requested by the user.
 
 ---
 
@@ -962,3 +1005,10 @@ All commands are defined in `package.json` scripts:
 - The dev server starts in ~200ms and supports HMR — no restart needed after code changes.
 - No environment variables or `.env` files are required.
 - No external services, databases, or APIs are needed — all data is hardcoded in `src/data/`.
+
+### Preview Verification
+
+- For every UI or website change, start or reuse `pnpm dev --host 0.0.0.0`.
+- Confirm the app loads in Cursor Preview / browser before final response.
+- If the user needs a clickable external preview URL, do not provide `localhost` or `172.x.x.x`; use the Cursor forwarded port URL if visible, or create and verify a temporary external tunnel.
+- Include screenshot or video evidence after confirming the page loads.
